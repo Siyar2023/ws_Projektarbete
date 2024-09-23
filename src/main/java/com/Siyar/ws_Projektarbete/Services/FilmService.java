@@ -21,6 +21,11 @@ public class FilmService {
         return filmRepository.findAll();
     }
 
+    //Denna metod returnerar en film från databasen baserat på det angivna filmnamnet. Den använder filmRepository för att söka efter filmen med det specifika ID
+    //(filmnamnet) och returnerar filmen om den finns, annars returneras null.
+    public Film getFilmByMovie(String movie) {
+        return filmRepository.findById(movie).orElse(null);
+    }
 
 
 
