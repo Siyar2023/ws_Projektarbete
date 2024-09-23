@@ -130,8 +130,3 @@ public class Film {
         this.audio = audio;
     }
 }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 716ab4ada4ebfbad39bd160c8625c0ac025c9723
