@@ -42,4 +42,19 @@ public class FilmController {
         Film savedFilm = filmService.saveFilm(film);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedFilm);
     }
+    @PostMapping
+    public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        Film savedFilm = filmService.saveFilm(film);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFilm);
+    }
+// Lägger till en uppdateringsmetod för att hantera PUT-förfrågningar.
+// Den tar emot ett filmnamn (movie) som PathVariable och en film som RequestBody.
+// Filmen uppdateras baserat på den nya informationen och sparas i databasen.
+    @PutMapping("/{movie}")
+    public ResponseEntity<Film> updateFilm(@PathVariable String movie, @RequestBody Film film) {
+        film.setMovie(movie);
+        Film updatedFilm = filmService.saveFilm(film);
+        return ResponseEntity.ok(updatedFilm);
+    }
+
 }
