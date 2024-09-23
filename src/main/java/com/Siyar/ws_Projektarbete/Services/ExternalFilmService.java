@@ -20,6 +20,7 @@ public class ExternalFilmService {
     //// ser till att Spring automatiskt injicerar rätt instans av FilmRepository.
     @Autowired
     private FilmRepository filmRepository;
+
     // Lägger till en metod för att hämta en slumpmässig film via ett API-anrop
     //    // till URL
     //    //"https://owen-wilson-wow-api.onrender.com/wows/random".
@@ -28,44 +29,40 @@ public class ExternalFilmService {
     public void fetchRandomFilm() {
         String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
 
-<<<<<<< HEAD
-    @Autowired
-    private FilmRepository filmRepository;
 
-    public void fetchRandomFilm() {
-        String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
+        @Autowired
+        private FilmRepository filmRepository;
 
-        // Hämta listan av filmer
-        List<Film> films = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Film>>() {}).getBody();
+        public void fetchRandomFilm () {
+            String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
 
-=======
-        //Denna kodsnutt hämtar en lista av filmer från ett givet API genom att
-        //    // använda RestTemplate och metoden exchange. Den gör en
-        //    // GET-förfrågan till den angivna URL
-        //    //och returnerar resultatet som en lista av Film-objekt.
-        List<Film> films = restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Film>>() {}).getBody();
+            // Hämta listan av filmer
+            List<Film> films = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<Film>>() {
+                    }).getBody();
 
->>>>>>> 716ab4ada4ebfbad39bd160c8625c0ac025c9723
-        // Kontrollera om listan inte är null och har element
-        if (films != null && !films.isEmpty()) {
-            // Välj en slumpmässig film från listan
-            Film film = films.get(new Random().nextInt(films.size()));
-            filmRepository.save(film);
+            //Denna kodsnutt hämtar en lista av filmer från ett givet API genom att
+            //    // använda RestTemplate och metoden exchange. Den gör en
+            //    // GET-förfrågan till den angivna URL
+            //    //och returnerar resultatet som en lista av Film-objekt.
+            List<Film> films = restTemplate.exchange(
+                    url,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<Film>>() {
+                    }).getBody();
+
+
+            // Kontrollera om listan inte är null och har element
+            if (films != null && !films.isEmpty()) {
+                // Välj en slumpmässig film från listan
+                Film film = films.get(new Random().nextInt(films.size()));
+                filmRepository.save(film);
+            }
         }
     }
+
 }
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 716ab4ada4ebfbad39bd160c8625c0ac025c9723

@@ -39,7 +39,10 @@ public class FilmService {
         filmRepository.deleteById(movie);
     }
 
-
-
-
+   //Denna metod, searchFilmsByMovie, tar en strängparameter movie och returnerar en lista av Film-objekt.
+   // Den använder filmRepository för att hämta filmer vars namn innehåller den angivna strängen, oavsett om bokstäverna är stora eller små.
+    public List<Film> searchFilmsByMovie(String movie) {
+        return filmRepository.findByMovieContainingIgnoreCase(movie);
+    }
 }
+
