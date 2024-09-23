@@ -12,7 +12,17 @@ import java.util.List;
 public class FilmService {
 
     //Lägger till @Autowired
-    @Autowired (SIYAR)
+    @Autowired
     private FilmRepository filmRepository;
+
+
+    //Läggerin metid för att hämta alla filmer från databasen.
+    public List<Film> getAllFilms() {
+        return filmRepository.findAll();
+    }
+
+
+
+
 
 }
