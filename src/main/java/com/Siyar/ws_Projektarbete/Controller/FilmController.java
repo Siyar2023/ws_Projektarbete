@@ -34,7 +34,40 @@ public class FilmController {
             return ResponseEntity.notFound().build();
         }
     }
+<<<<<<< HEAD
 
 
 
+=======
+    // Lägger till @PostMapping för att hantera POST-förfrågningar som
+    // lägger till en ny film. Denna metod tar emot en film via HTTP POST, sparar den i databasen och returnerar en ResponseEntity med
+    // statuskoden 201 (CREATED) tillsammans med den sparade filmen.
+    @PostMapping
+    public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        Film savedFilm = filmService.saveFilm(film);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFilm);
+    }
+    @PostMapping
+    public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        Film savedFilm = filmService.saveFilm(film);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFilm);
+    }
+// Lägger till en uppdateringsmetod för att hantera PUT-förfrågningar.
+// Den tar emot ett filmnamn (movie) som PathVariable och en film som RequestBody.
+// Filmen uppdateras baserat på den nya informationen och sparas i databasen.
+    @PutMapping("/{movie}")
+    public ResponseEntity<Film> updateFilm(@PathVariable String movie, @RequestBody Film film) {
+        film.setMovie(movie);
+        Film updatedFilm = filmService.saveFilm(film);
+        return ResponseEntity.ok(updatedFilm);
+    }
+    //Lägger till en metod för att hantera DELETE-förfrågningar.
+    // Den tar emot ett filmnamn (movie) som PathVariable och raderar filmen med det namnet från databasen.
+    // Returnerar en 204 No Content-status om raderingen lyckas.
+    @DeleteMapping("/{movie}")
+    public ResponseEntity<Void> deleteFilm(@PathVariable String movie) {
+        filmService.deleteFilm(movie);
+        return ResponseEntity.noContent().build();
+    }
+>>>>>>> 716ab4ada4ebfbad39bd160c8625c0ac025c9723
 }
