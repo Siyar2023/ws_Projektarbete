@@ -16,7 +16,7 @@ public class FilmService {
     private FilmRepository filmRepository;
 
 
-    //Läggerin metid för att hämta alla filmer från databasen.
+    //Lägger in metod för att hämta alla filmer från databasen.
     public List<Film> getAllFilms() {
         return filmRepository.findAll();
     }

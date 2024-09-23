@@ -16,5 +16,26 @@ import java.util.Random;
 public class ExternalFilmService {
     private final RestTemplate restTemplate = new RestTemplate();
 
+    @Autowired
+    private FilmRepository filmRepository;
 
+    public void fetchRandomFilm() {
+        String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
+
+        // Hämta listan av filmer
+        List<Film> films = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Film>>() {}).getBody();
+
+        // Kontrollera om listan inte är null och har element
+        if (films != null && !films.isEmpty()) {
+            // Välj en slumpmässig film från listan
+            Film film = films.get(new Random().nextInt(films.size()));
+            filmRepository.save(film);
+        }
+    }
 }
+
+
