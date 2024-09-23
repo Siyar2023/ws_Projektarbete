@@ -34,5 +34,12 @@ public class FilmController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    // Lägger till @PostMapping för att hantera POST-förfrågningar som
+    // lägger till en ny film. Denna metod tar emot en film via HTTP POST, sparar den i databasen och returnerar en ResponseEntity med
+    // statuskoden 201 (CREATED) tillsammans med den sparade filmen.
+    @PostMapping
+    public ResponseEntity<Film> addFilm(@RequestBody Film film) {
+        Film savedFilm = filmService.saveFilm(film);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedFilm);
+    }
 }
