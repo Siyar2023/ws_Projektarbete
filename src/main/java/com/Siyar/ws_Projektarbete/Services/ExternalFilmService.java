@@ -15,10 +15,14 @@ import java.util.Random;
 @Service
 public class ExternalFilmService {
     private final RestTemplate restTemplate = new RestTemplate();
-//Lägger till autowired-injektion av FilmRepository för att hantera
+    //Lägger till autowired-injektion av FilmRepository för att hantera
 // databasoperationer relaterade till filmer i applikationen. @Autowired
 // ser till att Spring automatiskt injicerar rätt instans av FilmRepository.
     @Autowired
     private FilmRepository filmRepository;
 
+    public void fetchRandomFilm() {
+        String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
+
+    }
 }
