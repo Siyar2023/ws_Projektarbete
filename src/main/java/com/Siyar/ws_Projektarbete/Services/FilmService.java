@@ -11,5 +11,8 @@ import java.util.List;
 @Service
 public class FilmService {
 
+    //Lägger till @Autowired
+    @Autowired (SIYAR)
+    private FilmRepository filmRepository;
 
 }
