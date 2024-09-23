@@ -13,5 +13,9 @@ import java.util.List;
 @RequestMapping("/films")
 public class FilmController {
 
+    //filmService-variabeln ska automatiskt injiceras.
+    @Autowired
+    private FilmService filmService;
+
 
 }
