@@ -26,6 +26,13 @@ public class FilmService {
     public Film getFilmByMovie(String movie) {
         return filmRepository.findById(movie).orElse(null);
     }
+    //Denna metod tar en Film-objekt som parameter och sparar det i databasen.
+    // Den använder filmRepository för att utföra operationen och returnerar det sparade filmobjektet, vilket inkluderar eventuella genererade ID
+    //eller andra förändringar som gjorts av databasen.
+    public Film saveFilm(Film film) {
+        return filmRepository.save(film);
+    }
+
 
 
 
