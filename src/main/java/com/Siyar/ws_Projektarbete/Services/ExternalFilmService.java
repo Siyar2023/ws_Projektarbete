@@ -21,8 +21,23 @@ public class ExternalFilmService {
     @Autowired
     private FilmRepository filmRepository;
 
+    // Lägger till en metod för att hämta en slumpmässig film via ett API-anrop
+    // till URL
+    //"https://owen-wilson-wow-api.onrender.com/wows/random".
+    // Denna metod kan användas
+    // för att integrera data från en extern källa i applikationen.
     public void fetchRandomFilm() {
         String url = "https://owen-wilson-wow-api.onrender.com/wows/random";
 
     }
+    //Denna kodsnutt hämtar en lista av filmer från ett givet API genom att
+    // använda RestTemplate och metoden exchange. Den gör en
+    // GET-förfrågan till den angivna URL
+    //och returnerar resultatet som en lista av Film-objekt.
+    List<Film> films = restTemplate.exchange(
+            url,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<Film>>() {}).getBody();
+
 }
