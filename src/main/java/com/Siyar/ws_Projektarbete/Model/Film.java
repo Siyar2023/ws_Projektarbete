@@ -8,7 +8,7 @@ public class Film {
 
     //Lägger till privata variabler med Getters/Setters
     @Id
-
+    @Column(name = "movie", unique = true, nullable = false) //Lägger till @Column annotering.
     private String movie;
     private int year;
     private String release_date;
