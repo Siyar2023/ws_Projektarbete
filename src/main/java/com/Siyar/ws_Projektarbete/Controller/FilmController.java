@@ -56,5 +56,12 @@ public class FilmController {
         Film updatedFilm = filmService.saveFilm(film);
         return ResponseEntity.ok(updatedFilm);
     }
-
+    //Lägger till en metod för att hantera DELETE-förfrågningar.
+    // Den tar emot ett filmnamn (movie) som PathVariable och raderar filmen med det namnet från databasen.
+    // Returnerar en 204 No Content-status om raderingen lyckas.
+    @DeleteMapping("/{movie}")
+    public ResponseEntity<Void> deleteFilm(@PathVariable String movie) {
+        filmService.deleteFilm(movie);
+        return ResponseEntity.noContent().build();
+    }
 }
