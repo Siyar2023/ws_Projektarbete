@@ -17,5 +17,11 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
 
+    //Lagt @GetMapping för att mappa en HTTP GET-förfrågan till en specifik metod i controller.
+    @GetMapping
+    public ResponseEntity<List<Film>> getAllFilms() {
+        return ResponseEntity.ok(filmService.getAllFilms());
+    }
+
 
 }
