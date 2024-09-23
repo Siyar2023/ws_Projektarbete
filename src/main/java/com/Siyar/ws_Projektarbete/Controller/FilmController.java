@@ -24,4 +24,15 @@ public class FilmController {
     }
 
 
+    //Lägger till @GetMapping för att söka, hitta och returnera en film.
+    @GetMapping("/{movie}")
+    public ResponseEntity<Film> getFilmByMovie(@PathVariable String movie) {
+        Film film = filmService.getFilmByMovie(movie);
+        if (film != null) {
+            return ResponseEntity.ok(film);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
